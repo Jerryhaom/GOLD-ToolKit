@@ -12,18 +12,11 @@ To promote the applications of Gompertz law-based (GOLD) algorithm of biological
 ## 📚 Documentation
 
 ### Methodology Formulas
-- [View Formulas Documentation](https://cdn.jsdelivr.net/gh/Jerryhaom/GOLD-ToolKits@main/Formulas.html)
-- [Alternative CDN Link](https://raw.githack.com/Jerryhaom/GOLD-ToolKits/main/Formulas.html)
-
-### Quick Access
-```markdown
-[GOLD BioAge Methodology](https://cdn.jsdelivr.net/gh/Jerryhaom/GOLD-ToolKits@main/Formulas.html)
-```
+- [View Formulas Documentation](https://raw.githack.com/Jerryhaom/GOLD-ToolKits/main/Formulas.html)
 
 # INSTALL <br>
 install.packages("devtools") <br>
 devtools::install_github("Jerryhaom/GOLD-ToolKits") <br>
-
  
 # More information
 
