@@ -9,7 +9,16 @@ To promote the applications of Gompertz law-based (GOLD) algorithm of biological
 |**GOLD-RL**| Longitudinal survival data | Estimate mortality hazard and age residuals | Combines hazard estimation with residual analysis |
 |**GOLD-B**| Compatible with various data types | Update biological age residuals | Bayesian framework for residual refinement |
 
- Methodology and formula info: https://jerryhaom.github.io/GOLD-ToolKits/Formulas.html
+## 📚 Documentation
+
+### Methodology Formulas
+- [View Formulas Documentation](https://cdn.jsdelivr.net/gh/Jerryhaom/GOLD-ToolKits@main/Formulas.html)
+- [Alternative CDN Link](https://raw.githack.com/Jerryhaom/GOLD-ToolKits/main/Formulas.html)
+
+### Quick Access
+```markdown
+[GOLD BioAge Methodology](https://cdn.jsdelivr.net/gh/Jerryhaom/GOLD-ToolKits@main/Formulas.html)
+```
 
 # INSTALL <br>
 install.packages("devtools") <br>
