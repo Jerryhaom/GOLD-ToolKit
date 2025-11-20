@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLD BioAge Methodology Framework</title>
+    <!-- MathJax配置 -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                tags: 'ams'
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            color: #222;
+            max-width: 100%;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
+            padding-left: 8px;
+            border-left: 3px solid #3498db;
+            font-size: 1.3em;
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+            font-size: 1.1em;
+        }
+        p, li {
+            margin-bottom: 0.8em;
+        }
+        .equation-container {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .equation {
+            text-align: center;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        .equation-number {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 3px;
+            color: #555;
+            font-size: 0.9em;
+        }
+        ul {
+            padding-left: 20px;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            background-color: #f1f1f1;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        .step-number {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            margin-right: 8px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .note {
+            background-color: #e7f3ff;
+            border-left: 4px solid #3498db;
+            padding: 8px 12px;
+            margin: 10px 0;
+            font-size: 0.85em;
+        }
+        .method-section {
+            margin-bottom: 2em;
+            padding-bottom: 1em;
+            border-bottom: 1px solid #eee;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GOLD BioAge Methodology Framework</h1>
+
+        <div class="method-section">
+            <h2><span class="step-number">1</span> GOLD BioAge</h2>
+
+            <h3>Model Definition</h3>
+            <p>Define two Gompertz mortality hazard models:</p>
+            <div class="equation-container">
+                <div class="equation">$$ \log h_1 = \log(\text{Rate}_1) + \beta_1 \cdot \text{Age} $$</div>
+                <div class="equation-number">(1a)</div>
+            </div>
+            <div class="equation-container">
+                <div class="equation">$$ \log h_2 = \log(\text{Rate}_1) + \beta_2 \cdot \text{Age} + \sum_i \beta_{2i} \cdot \text{Biomarker}_i $$</div>
+                <div class="equation-number">(1b)</div>
+            </div>
+
+            <h3>BioAge Definition</h3>
+            <p>BioAge is defined as the age with equal risk under the biomarker-inclusive model at baseline:</p>
+            <div class="equation-container">
+                <div class="equation">$$ h_1(\text{BioAge}) = h_2(\text{Age}, \text{Biomarkers}) $$</div>
+                <div class="equation-number">(2)</div>
+            </div>
+
+            <h3>Solution</h3>
+            <p>Solving for GOLD BioAge yields:</p>
+            <div class="equation-container">
+                <div class="equation">$$ \text{GOLD BioAge} = \text{Age} + \sum_i \frac{\beta_{2i}}{\beta_1} \text{Biomarker}_i + \text{Intercept} $$</div>
+                <div class="equation-number">(3)</div>
+            </div>
+        </div>
+
+        <div class="method-section">
+            <h2><span class="step-number">2</span> GOLD-R BioAge</h2>
+
+            <h3>Gompertz Model</h3>
+            <div class="equation-container">
+                <div class="equation">$$ \log h = \log(\text{Rate}) + \text{Shape} \cdot \text{Age} $$</div>
+                <div class="equation-number">(4)</div>
+            </div>
+
+            <h3>Biomarker Prediction</h3>
+            <p>Use biomarkers to predict the logarithm of mortality risk:</p>
+            <div class="equation-container">
+                <div class="equation">$$ \widehat{\log h} = \sum_i \beta_i \cdot \text{Biomarker}_i + \text{Intercept} $$</div>
+                <div class="equation-number">(5)</div>
+            </div>
+
+            <h3>Residual Calculation</h3>
+            <p>Obtain the initial residual and predict through remaining biomarkers:</p>
+            <div class="equation-container">
+                <div class="equation">$$ \text{Residual} = \widehat{\log h} - \text{Shape} \cdot \text{CA} = \sum_j \beta_j' \cdot \text{Biomarker}_j + \text{Intercept}' $$</div>
+                <div class="equation-number">(6)</div>
+            </div>
+
+            <h3>BioAge Solution</h3>
+            <div class="equation-container">
+                <div class="equation">$$ \text{GOLD-R BioAge} = \text{Age} + \frac{\widehat{\text{Residual}} - \log(\text{Rate})}{\text{Shape}} $$</div>
+                <div class="equation-number">(7)</div>
+            </div>
+        </div>
+
+        <div class="method-section">
+            <h2><span class="step-number">3</span> GOLD-RL BioAge</h2>
+
+            <h3>Baseline Model</h3>
+            <p>At baseline, take the logarithm of the mortality risk including biomarkers:</p>
+            <div class="equation-container">
+                <div class="equation">$$ \log h = \log(\text{Rate}) + \beta \cdot \text{Age} + \sum_i \beta_i \cdot \text{Biomarker}_i $$</div>
+                <div class="equation-number">(8)</div>
+            </div>
+
+            <h3>Residual Definition</h3>
+            <div class="equation-container">
+                <div class="equation">$$ \text{Residual} = \log h - \text{Shape} \cdot \text{Age} $$</div>
+                <div class="equation-number">(9)</div>
+            </div>
+
+            <h3>Biomarker Prediction</h3>
+            <p>Residual predicted by the biomarkers:</p>
+            <div class="equation-container">
+                <div class="equation">$$ \text{Residual} = \sum_j \beta_j' \cdot \text{Biomarker}_j + \text{Intercept}' $$</div>
+                <div class="equation-number">(10)</div>
+            </div>
+
+            <h3>BioAge Calculation</h3>
+            <div class="equation-container">
+                <div class="equation">$$ \text{GOLD-RL BioAge} = \text{Age} + \frac{\widehat{\text{Residual}} - \log(\text{Rate})}{\text{Shape}} $$</div>
+                <div class="equation-number">(11)</div>
+            </div>
+        </div>
+
+        <div class="method-section">
+            <h2><span class="step-number">4</span> GOLD-B BioAge</h2>
+
+            <h3>Bayesian Framework</h3>
+            <p>Using Bayes' theorem:</p>
+            <div class="equation-container">
+                <div class="equation">$$ P(\text{Residual} \mid \text{Biomarker}) = \frac{P(\text{Biomarker} \mid \text{Residual}) \cdot P(\text{Residual})}{P(\text{Biomarker})} $$</div>
+                <div class="equation-number">(12)</div>
+            </div>
+
+            <h3>BioAge Definition</h3>
+            <div class="equation-container">
+                <div class="equation">$$ \text{GOLD-B BioAge} = \text{Age} + \mu(\text{Residual} \mid \text{Biomarker}) $$</div>
+                <div class="equation-number">(13)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
