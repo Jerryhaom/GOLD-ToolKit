@@ -6,7 +6,8 @@
 #' Cox-LASSO feature selection for biomarkers
 #'
 #' @param d4 Dataframe containing survival information (time, status)
-#' @param var Character vector of variable names (must include 'age')
+#' @param var Character vector of variable names for predicting mortality hazard (must include 'age')
+#' @param var Character vector of variable names for predicting residuals
 #' @param feature_selection Logical indicating whether to perform feature selection (default: FALSE)
 #' @param selection_method Method for feature selection: "lasso", "elasticnet", or "none"
 #' @param alpha Elasticnet mixing parameter (0 = ridge, 1 = lasso)
@@ -15,8 +16,10 @@
 #'
 #' @return A list containing:
 #' \itemize{
+#'   \item data: Model training data
 #'   \item residual: GOLD-RL BioAge Residuals
 #'   \item Coef: Coefficients of Biomarkers
+#'   \item Age: Chronological age
 #'   \item GOLDR-Bioage: GOLD-RL BioAge
 #'   \item risk: moratlity hazard from Gompertz regression model
 #' }
@@ -51,7 +54,7 @@
 #'                       alpha = 0.5)
 #'
 ##GOLD-RL
-goldrl_bioage <- function(d4, var, var1, feature_selection = TRUE,
+goldrl_bioage <- function(d4, var, var1=var, feature_selection = TRUE,
                           selection_method = "lasso", alpha = 1,
                           nfolds = 5, family = "cox") {
   # Validate inputs
