@@ -136,10 +136,10 @@ goldrl_bioage <- function(d4, var, var1=var, feature_selection = TRUE,
   resi=hhat-b1*dd$age
   
   # Step 1: predict residuals using rest biomarkers
-  biomarker_vars <- setdiff(var1, "age")
+  biomarker_vars <- var1
   x_data1 <- as.matrix(data[, make.names(biomarker_vars)])
   cv_fit2 <- glmnet::cv.glmnet(x = x_data1, y = resi, family = "gaussian",alpha = alpha_val,nfolds = nfolds)
-  yhat = predict(cv_fit2, x_data)
+  yhat = predict(cv_fit2, x_data1)
   yhat <- as.matrix(yhat)
   resi1 = yhat[,1] * sd(resi) / sd(yhat[,1])
   gamma = sd(resi) / sd(yhat[,1])
