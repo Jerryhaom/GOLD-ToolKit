@@ -1,7 +1,7 @@
 # GOLD-ToolKits
 To promote the applications of Gompertz law-based (GOLD) algorithm of biological age, we developed the R package 'GOLD-ToolKits' as an integration of these approaches.
 
-# Algorithms
+## Algorithms
 | Method | Data Requirements | Primary Function | Key Innovation |
 |--------|------------------|------------------|----------------|
 |**GOLD**| Longitudinal survival data | Estimate mortality hazard and biological age | Gompertz law application for mortality estimation |
@@ -14,14 +14,16 @@ To promote the applications of Gompertz law-based (GOLD) algorithm of biological
 ### Methodology Formulas
 - [View Formulas Documentation](https://raw.githack.com/Jerryhaom/GOLD-ToolKits/main/Formulas.html)
 
-# INSTALL <br>
+### INSTALL <br>
 install.packages("devtools") <br>
 devtools::install_github("Jerryhaom/GOLD-ToolKits") <br>
+
+### Usage
 browseVignettes("GOLDToolkits") <br>
 [View Online Vignette](https://raw.githack.com/Jerryhaom/GOLD-ToolKits/main/doc/my-vignette.html)  <br>
 
  
-# More information
+### More information
 
 Contact Information: haombio@gmail.com <br>
 ## Citation
