@@ -38,23 +38,24 @@
 #'
 #' # Define variables
 #' var <- c("age", "albumin", "alp", "creat", "glucose_mmol", "lymph", "mcv", "rdw", "wbc", "ggt")
-#'
+#' biomarker_vars <- setdiff(var, "age")
+#' 
 #' # Without feature selection
-#' result1 <- goldrl_bioage(NHANES4, var, var)
+#' result1 <- goldrl_bioage(NHANES4, var, biomarker_vars)
 #'
 #' # With LASSO feature selection
-#' result2 <- goldrl_bioage(NHANES4, var, var,
+#' result2 <- goldrl_bioage(NHANES4, var, biomarker_vars,
 #'                       feature_selection = TRUE,
 #'                       selection_method = "lasso")
 #'
 #' # With Elasticnet feature selection
-#' result3 <- goldrl_bioage(NHANES4, var, var,
+#' result3 <- goldrl_bioage(NHANES4, var, biomarker_vars,
 #'                       feature_selection = TRUE,
 #'                       selection_method = "elasticnet",
 #'                       alpha = 0.5)
 #'
 ##GOLD-RL
-goldrl_bioage <- function(d4, var, var1=var, feature_selection = TRUE,
+goldrl_bioage <- function(d4, var, var1, feature_selection = TRUE,
                           selection_method = "lasso", alpha = 1,
                           nfolds = 5, family = "cox") {
   # Validate inputs
